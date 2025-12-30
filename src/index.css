@@ -1,0 +1,368 @@
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Figtree:wght@300;400;500;600;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 210 30% 97%;
+    --foreground: 215 30% 20%;
+    --card: 210 35% 95%;
+    --card-foreground: 215 30% 20%;
+    --popover: 210 30% 97%;
+    --popover-foreground: 215 30% 20%;
+    --primary: 215 100% 64%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 210 40% 90%;
+    --secondary-foreground: 215 30% 25%;
+    --muted: 210 25% 92%;
+    --muted-foreground: 215 15% 45%;
+    --accent: 215 100% 64%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 215 25% 85%;
+    --input: 215 25% 85%;
+    --ring: 215 100% 64%;
+    --radius: 0.75rem;
+
+    /* Custom tokens - Rebrand 2026 Blue */
+    --grovy-purple: 215 100% 64%; /* #458AFF - biru cerah */
+    --grovy-dark: 215 85% 55%; /* biru lebih gelap */
+    --grovy-light: 210 55% 85%; /* #BODAFF - biru muda */
+    --grovy-cream: 0 0% 100%; /* #FFFFFF - putih */
+    --grovy-beige: 210 30% 95%; /* off-white kebiruan */
+    --grovy-gold: 215 100% 64%; /* menggunakan biru utama */
+
+    /* Gradients */
+    --gradient-hero: linear-gradient(
+      135deg,
+      hsl(215 100% 64% / 0.1) 0%,
+      hsl(215 100% 70% / 0.1) 50%,
+      hsl(210 55% 85%) 100%
+    );
+    --gradient-card: linear-gradient(
+      145deg,
+      hsl(210 30% 95%) 0%,
+      hsl(0 0% 100%) 100%
+    );
+    --gradient-text: linear-gradient(
+      135deg,
+      hsl(215 100% 64%) 0%,
+      hsl(215 100% 70%) 100%
+    );
+
+    /* Shadows */
+    --shadow-elegant: 0 20px 60px -15px hsl(215 100% 64% / 0.15),
+      0 10px 30px -10px hsl(215 100% 64% / 0.1);
+    --shadow-glow: 0 0 40px hsl(215 100% 64% / 0.2);
+    --shadow-soft: 0 4px 20px hsl(215 100% 64% / 0.08);
+
+    --sidebar-background: 210 30% 97%;
+    --sidebar-foreground: 215 30% 20%;
+    --sidebar-primary: 215 100% 64%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 210 40% 92%;
+    --sidebar-accent-foreground: 215 30% 20%;
+    --sidebar-border: 215 25% 88%;
+    --sidebar-ring: 215 100% 64%;
+  }
+
+  .dark {
+    --background: 215 35% 8%;
+    --foreground: 0 0% 95%;
+    --card: 215 30% 12%;
+    --card-foreground: 0 0% 95%;
+    --popover: 215 30% 12%;
+    --popover-foreground: 0 0% 95%;
+    --primary: 215 100% 64%;
+    --primary-foreground: 215 35% 8%;
+    --secondary: 215 25% 18%;
+    --secondary-foreground: 0 0% 95%;
+    --muted: 215 25% 18%;
+    --muted-foreground: 210 15% 65%;
+    --accent: 215 100% 70%;
+    --accent-foreground: 215 35% 8%;
+    --destructive: 0 62% 30%;
+    --destructive-foreground: 0 0% 95%;
+    --border: 215 25% 20%;
+    --input: 215 25% 20%;
+    --ring: 215 100% 64%;
+    --grovy-purple: 215 100% 64%;
+    --grovy-dark: 215 85% 55%;
+    --grovy-light: 215 80% 75%;
+    --grovy-cream: 215 20% 15%;
+    --grovy-beige: 215 18% 12%;
+    --sidebar-background: 215 35% 8%;
+    --sidebar-foreground: 0 0% 95%;
+    --sidebar-primary: 215 100% 64%;
+    --sidebar-primary-foreground: 215 35% 8%;
+    --sidebar-accent: 215 25% 15%;
+    --sidebar-accent-foreground: 0 0% 95%;
+    --sidebar-border: 215 25% 15%;
+    --sidebar-ring: 215 100% 64%;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-display;
+  }
+}
+
+@layer components {
+  .circular-gallery {
+    @apply w-full h-[70vh] md:h-[75vh] relative overflow-hidden;
+  }
+
+  .rotating-title {
+    @apply text-accent font-display;
+  }
+
+  .gradient-text {
+    background: var(--gradient-text);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .glass-card {
+    @apply bg-card/80 backdrop-blur-md border border-primary/20;
+    box-shadow: var(--shadow-elegant);
+  }
+
+  .hover-lift {
+    @apply transition-all duration-300 ease-out;
+  }
+
+  .hover-lift:hover {
+    @apply -translate-y-1;
+    box-shadow: var(--shadow-elegant);
+  }
+
+  .grovy-gradient {
+    background: linear-gradient(
+      135deg,
+      hsl(var(--grovy-purple)),
+      hsl(var(--grovy-dark))
+    );
+  }
+
+  .nav-link {
+    color: hsl(var(--grovy-dark));
+    font-weight: 500;
+    transition: color 0.25s ease;
+  }
+
+  .nav-link:hover {
+    color: hsl(var(--grovy-purple));
+  }
+
+  .navbar-bg {
+    background-color: #1a3a6b;
+  }
+
+  .glossy-orb {
+    background: linear-gradient(135deg, #72b4e8, #458aff, #2563eb);
+  }
+}
+
+@layer utilities {
+  /* Float animation */
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  /* Pulse soft animation */
+  .animate-pulse-soft {
+    animation: pulse-soft 3s ease-in-out infinite;
+  }
+
+  @keyframes pulse-soft {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.7;
+    }
+  }
+
+  /* Slide up animation */
+  .animate-slide-up {
+    animation: slideUp 0.6s ease-out forwards;
+  }
+
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Slide down animation */
+  .animate-slideDown {
+    animation: slideDown 0.25s ease-out;
+  }
+
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Wiggle animation - untuk "katakan Kimmy!" */
+  .animate-wiggle {
+    animation: wiggle 1.5s ease-in-out infinite;
+  }
+
+  @keyframes wiggle {
+    0%,
+    100% {
+      transform: rotate(0deg);
+    }
+    25% {
+      transform: rotate(-5deg);
+    }
+    75% {
+      transform: rotate(5deg);
+    }
+  }
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.video-card-hover {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.video-card-hover:hover {
+  transform: translateY(-8px) scale(1.02);
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse-soft {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+.animate-slide-up {
+  animation: slide-up 0.8s ease-out forwards;
+}
+
+.animate-pulse-soft {
+  animation: pulse-soft 4s ease-in-out infinite;
+}
+
+.grovy-button {
+  background: linear-gradient(
+    135deg,
+    hsl(215 85% 55%) 0%,
+    hsl(215 100% 64%) 45%,
+    hsl(215 100% 70%) 100%
+  );
+  color: hsl(0 0% 100%);
+  box-shadow: 0 8px 24px hsl(215 100% 64% / 0.25),
+    inset 0 1px 0 hsl(210 55% 95% / 0.35);
+}
+
+.grovy-button:hover {
+  background: linear-gradient(
+    135deg,
+    hsl(215 90% 52%) 0%,
+    hsl(215 100% 62%) 50%,
+    hsl(215 100% 72%) 100%
+  );
+  transform: translateY(-1px) scale(1.01);
+  box-shadow: var(--shadow-elegant);
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes pulse-soft {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-pulse-soft {
+  animation: pulse-soft 3s ease-in-out infinite;
+}
